@@ -185,9 +185,9 @@ namespace LegacyApp.Tests
 
             result.Should().BeTrue();
             personRepositoryMock.Verify(x => x.SavePerson(It.Is<Person>(y =>
-                y.FavSportSummary.Contains("max mustermann has 5 Year Experience in Soccer") &&
-                y.FavSportSummary.Contains("max mustermann plays the Position Striker") &&
-                y.FavSportSummary.Contains("max mustermann plays for Team FC Barcelona"))));
+                y.FavSportSummary.Contains("has 5 Year Experience in Soccer") &&
+                y.FavSportSummary.Contains("plays the Position Striker") &&
+                y.FavSportSummary.Contains("plays for Team FC Barcelona"))));
         }
 
         [Fact]
@@ -213,8 +213,8 @@ namespace LegacyApp.Tests
 
             result.Should().BeTrue();
             personRepositoryMock.Verify(x => x.SavePerson(It.Is<Person>(y =>
-                y.FavSportSummary.Contains("max mustermann has 3 Year Experience in Tennis") &&
-                y.FavSportSummary.Contains("max mustermann has won 113 Tournaments"))));
+                y.FavSportSummary.Contains("has 3 Year Experience in Tennis") &&
+                y.FavSportSummary.Contains("has won 113 Tournaments"))));
         }
 
         [Fact]
@@ -240,8 +240,8 @@ namespace LegacyApp.Tests
 
             result.Should().BeTrue();
             personRepositoryMock.Verify(x => x.SavePerson(It.Is<Person>(y =>
-                y.FavSportSummary.Contains("max mustermann has 9 Year Experience in Chess") &&
-                y.FavSportSummary.Contains("max mustermann has an ELO of 2500") )));
+                y.FavSportSummary.Contains("has 9 Year Experience in Chess") &&
+                y.FavSportSummary.Contains("has an ELO of 2500") )));
         }
 
         [Theory]

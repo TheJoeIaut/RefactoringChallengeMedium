@@ -46,19 +46,19 @@ public class SportsPersonService
 
         if (favSport.GetType() == typeof(Soccer))
         {
-            person.FavSportSummary = person.FirstName + " " + person.LastName + " has " + ((Soccer)favSport).Experience + " Year Experience in Soccer\n";
-            person.FavSportSummary += person.FirstName + " " + person.LastName + " plays the Position " + ((Soccer)favSport).Position+"\n";
-            person.FavSportSummary += person.FirstName + " " + person.LastName + " plays for Team " + ((Soccer)favSport).Team+"\n";
+            person.FavSportSummary = "has " + ((Soccer)favSport).Experience + " Year Experience in Soccer\n";
+            person.FavSportSummary += "plays the Position " + ((Soccer)favSport).Position+"\n";
+            person.FavSportSummary += "plays for Team " + ((Soccer)favSport).Team+"\n";
         }
         if (favSport.GetType() == typeof(Tennis))
         {
-            person.FavSportSummary = person.FirstName + " " + person.LastName + " has " + ((Tennis)favSport).Experience + " Year Experience in Tennis\n";
-            person.FavSportSummary += person.FirstName + " " + person.LastName + " has won " + ((Tennis)favSport).TorunamentsWon + " Tournaments\n";
+            person.FavSportSummary = "has " + ((Tennis)favSport).Experience + " Year Experience in Tennis\n";
+            person.FavSportSummary += "has won " + ((Tennis)favSport).TorunamentsWon + " Tournaments\n";
         }
         if (favSport.GetType() == typeof(Chess))
         {
-            person.FavSportSummary = person.FirstName + " " + person.LastName + " has " + ((Chess)favSport).Experience + " Year Experience in Chess\n";
-            person.FavSportSummary += person.FirstName + " " + person.LastName + " has an ELO of " + ((Chess)favSport).Elo + "\n";
+            person.FavSportSummary = "has " + ((Chess)favSport).Experience + " Year Experience in Chess\n";
+            person.FavSportSummary += " has an ELO of " + ((Chess)favSport).Elo + "\n";
         }
 
         if (favSport.GetType() != typeof(Soccer) && favSport.GetType() != typeof(Tennis) && favSport.GetType() != typeof(Chess))
