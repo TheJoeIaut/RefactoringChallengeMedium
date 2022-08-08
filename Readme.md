@@ -1,4 +1,4 @@
-﻿## ATOS Refactoring Challange	
+﻿## ATOS Refactoring Challenge	
 - The ClassLibrary "LegacyApp" is used in various Projects to create new SportsPersons
 - You are asked to refactor the "SportsPersonService" Class and apply Clean Code principles to it (eg. SOLID, KISS, DRY, YAGNI)
 - Assume the code is sound in terms of business logic
