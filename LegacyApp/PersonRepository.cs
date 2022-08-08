@@ -15,4 +15,17 @@ namespace LegacyApp
             InMemoryPersons.Add(person);
         }
     }
+
+    public class PersonRepositoryAccess: IPersonRepository
+    {
+        public void SavePerson(Person person)
+        {
+            PersonRepository.SavePerson(person);
+        }
+    }
+
+    public interface IPersonRepository
+    {
+        void SavePerson(Person person);
+    }
 }

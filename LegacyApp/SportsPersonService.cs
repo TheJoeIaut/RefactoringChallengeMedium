@@ -1,15 +1,32 @@
 ﻿namespace LegacyApp;
 public class SportsPersonService
 {
+    private readonly IPersonRepository _personRepository;
+    private readonly IMeasurementLoader _measurementLoader;
+    private readonly ITimeService _timeService;
+
+    public SportsPersonService() : this(new PersonRepositoryAccess(), new MeasurementLoader(), new TimeService())
+    {
+        
+    }
+
+    public SportsPersonService(IPersonRepository personRepository, IMeasurementLoader measurementLoader, ITimeService timeService)
+    {
+        _personRepository = personRepository;
+        _measurementLoader = measurementLoader;
+        _timeService = timeService;
+    }
+
+
     public bool AddSportsPerson(string fname, string lastname, DateTime birthdate, string email, object favSport)
     {
         if(string.IsNullOrEmpty(fname) || string.IsNullOrEmpty(lastname))
             return false;
 
-        if (!email.Contains("@") && !email.Contains("."))
+        if (!email.Contains("@") || !email.Contains("."))
             return false;
 
-        var now = DateTime.Now;
+        var now = _timeService.Now;
         int age = now.Year - birthdate.Year;
 
         if (now.Month < birthdate.Month || (now.Month == birthdate.Month && now.Day < birthdate.Day))
@@ -49,14 +66,14 @@ public class SportsPersonService
             return false;
         }
 
-        var measurementLoader = new MeasurementLoader();
-        var measurements = measurementLoader.GetMeasurementByName(person.FirstName, person.LastName);
+
+        var measurements = _measurementLoader.GetMeasurementByName(person.FirstName, person.LastName);
 
         if (measurements == null)
             return false;
 
         //Basketball
-        if (measurements.Value.heigth >= 180 && measurements.Value.weigth < 100)
+        if (measurements.Value.heigth >= 180 && measurements.Value.weight < 100)
         {
             var suggestSport = new Person.SuggestedSport();
 
@@ -68,6 +85,7 @@ public class SportsPersonService
             {
                 suggestSport.Position = "Center";
             }
+            person.SuggestedSports.Add(suggestSport);
 
         }
 
@@ -77,17 +95,19 @@ public class SportsPersonService
             var suggestSport = new Person.SuggestedSport();
 
             suggestSport.Sport = "American Football";
-            if (measurements.Value.weigth < 100)
-                suggestSport.Position = "Quarter Back";
+            if (measurements.Value.weight < 100)
+                suggestSport.Position = "Quarterback";
 
             else
             {
                 suggestSport.Position = "Lineman";
             }
+
+            person.SuggestedSports.Add(suggestSport);
         }
 
         //Soccer
-        if (measurements.Value.weigth < 100)
+        if (measurements.Value.weight < 100)
         {
             var suggestSport = new Person.SuggestedSport();
 
@@ -99,9 +119,11 @@ public class SportsPersonService
             {
                 suggestSport.Position = "Goalkeeper";
             }
+
+            person.SuggestedSports.Add(suggestSport);
         }
 
-        PersonRepository.SavePerson(person);
+        _personRepository.SavePerson(person);
 
         return true;
 

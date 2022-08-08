@@ -15,7 +15,7 @@ namespace LegacyApp
         public string Email { get; set; }
         public string FavSportSummary { get; set; }
 
-        public List<SuggestedSport> SuggestedSports { get; set; }
+        public List<SuggestedSport> SuggestedSports { get; set; } = new List<SuggestedSport>();
 
 
         public class SuggestedSport

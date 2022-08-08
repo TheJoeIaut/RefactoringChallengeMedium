@@ -6,9 +6,14 @@ using System.Threading.Tasks;
 
 namespace LegacyApp
 {
-    public class MeasurementLoader
+    public interface IMeasurementLoader
     {
-        public (int heigth, int weigth)? GetMeasurementByName(string firstname, string lastname)
+        (int heigth, int weight)? GetMeasurementByName(string firstname, string lastname);
+    }
+
+    public class MeasurementLoader : IMeasurementLoader
+    {
+        public (int heigth, int weight)? GetMeasurementByName(string firstname, string lastname)
         {
             var lookup = new Dictionary<string, (int heigth, int weigth)>
             {
