@@ -6,8 +6,8 @@
 - There will be new suggested and favourite sports added in the future. 
 
 ### Limitations
-- The Class "MeasurementLoader" retrieves Measurements for a Person based on the name. Usally it is an external Webservice and should not be used in Testing or during CI/CD.
-- The Class "PersonRepository" stores SportsPerson in a Database. Usally it writes to an external database and should not be used in Testing or during CI/CD.
+- The Class "MeasurementLoader" retrieves Measurements for a Person based on the name. Usually it is an external Webservice and should not be used in Testing or during CI/CD.
+- The Class "PersonRepository" stores SportsPerson in a Database. Usually it writes to an external database and should not be used in Testing or during CI/CD.
 - The "Program" class should not be changed (including using statements).
 - "PersonRepository" must remain static and the "SavePerson" method must not be changed.
 - You can change everything else in the "LegacyApp"
