@@ -3,6 +3,7 @@
 - You are asked to refactor the "SportsPersonService" Class and apply Clean Code principles to it (eg. SOLID, KISS, DRY, YAGNI)
 - Assume the code is sound in terms of business logic
 - Write a unit test for the happy path
+- There will be new suggested and favourite sports added in the future. 
 
 ### Limitations
 - The Class "MeasurementLoader" retrieves Measurements for a Person based on the name. Usally it is an external Webservice and should not be used in Testing or during CI/CD.
